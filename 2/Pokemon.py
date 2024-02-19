@@ -88,29 +88,43 @@ def calculate_damage(attacker, opponent):
     return damage
 
 
-if __name__ == '__main__':
+def death_update(curr_player1, curr_player2):
+    if curr_player1.life <= 0:
+        print(curr_player1.name + " has died.")
+        curr_player1 = choose_random(player1.pokemons)
+        print(curr_player1.name + " has joined the fight.")
+    if curr_player2.life <= 0:
+        print(curr_player2.name + " has died.")
+        curr_player2 = choose_random(player2.pokemons)
+        print(curr_player2.name + " has joined the fight.")
+    return curr_player1, curr_player2
+
+
+def attack(curr_player1, curr_player2):
+    attacker, opponent = attack_order(curr_player1, curr_player2)
+    damage = calculate_damage(attacker, opponent)
+    opponent.life -= damage
+    print(attacker.name + " attacks " + opponent.name + ". deals " + str(damage) + " damage. "
+          + opponent.name + " now has " + str(opponent.life) + " amount of life after the attack.")
+
+
+def create_players():
     player1 = Player("player1", generate_5_pokemons("player1"))
     player2 = Player("player2", generate_5_pokemons("player2"))
+    return player1, player2
+
+
+if __name__ == '__main__':
+    player1, player2 = create_players()
     curr_player1 = choose_random(player1.pokemons)
     print(curr_player1.name + " has joined the fight.")
     curr_player2 = choose_random(player2.pokemons)
     print(curr_player2.name + " has joined the fight.")
     win = False
     while not win:
-        if curr_player1.life <= 0:
-            print(curr_player1.name + " has died.")
-            curr_player1 = choose_random(player1.pokemons)
-            print(curr_player1.name + " has joined the fight.")
-        if curr_player2.life <= 0:
-            print(curr_player2.name + " has died.")
-            curr_player2 = choose_random(player2.pokemons)
-            print(curr_player2.name + " has joined the fight.")
+        curr_player1, curr_player2 = death_update(curr_player1, curr_player2)
         while curr_player1.life > 0 and curr_player2.life > 0:
-            attacker, opponent = attack_order(curr_player1, curr_player2)
-            damage = calculate_damage(attacker, opponent)
-            opponent.life -= damage
-            print(attacker.name + " attacks " + opponent.name + ". deals " + str(damage) + " damage. "
-                  + opponent.name + " now has " + str(opponent.life) + " amount of life after the attack.")
+            attack(curr_player1, curr_player2)
 
         winner, loser = check_for_winner(player1, player2)
         if winner:
