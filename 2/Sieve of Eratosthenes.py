@@ -1,31 +1,39 @@
 
+def remove_duplicates(list1, list2):
+    for prime in list1:
+        multiplier = 2
+        multiplications = prime * multiplier
+        while multiplications <= 150:
+            if multiplications in list2:
+                list2.remove(multiplications)
+            multiplier += 1
+            multiplications = prime * multiplier
 
-def SieveOfEratosthenes():
-    main_number_list = [i for i in range(4, 151)]
+
+def SieveOfEratosthenes(n):
+    main_number_list = [i for i in range(4, n + 1)]
     prime_number_list = [2, 3]
-    prime = True
+    remove_duplicates(prime_number_list, main_number_list)
+    found_prime = True
     for number in main_number_list:
         for prime in prime_number_list:
-            # print("the number is: " + str(number) + ". the prime is: " + str(prime))
             if number % prime == 0:
-                prime = False
+                found_prime = False
                 break
-        if prime:
+        if found_prime:
             prime_number_list.append(number)
-            multiplier = 2
-            multiplications = number * multiplier
-            while multiplications <= 150:
-                if multiplications in main_number_list:
-                    main_number_list.remove(multiplications)
-                multiplier += 1
-                multiplications = number * multiplier
+            remove_duplicates(prime_number_list, main_number_list)
+        found_prime = True
 
-        prime = True
+    for prime in prime_number_list:
+        if prime in main_number_list:
+            main_number_list.remove(prime)
     return len(prime_number_list), prime_number_list
 
 
 if __name__ == '__main__':
-    len, list = SieveOfEratosthenes()
+    num_range = 150
+    len, list = SieveOfEratosthenes(num_range)
     print("There are " + str(len) + " Prime numbers in the range (1, 150).")
     print("The prime numbers are: ")
     print(list)
