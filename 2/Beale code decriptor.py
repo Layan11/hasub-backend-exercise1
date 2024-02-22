@@ -18,5 +18,6 @@ if __name__ == '__main__':
     for i in my_gen_arr:
         words.append(i)
     print(words)
+    print("our plan is to get all of apples stock as soon as possible!")
 
 #our plan is to get all of apples stock as soon as possible!
