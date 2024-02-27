@@ -1,4 +1,4 @@
-org_chart_large = {
+{"org_chart_large =": {
     "name": "CEO",
     "subordinates": [
         {
@@ -60,9 +60,9 @@ org_chart_large = {
             ]
         }
     ]
-}
+},
 
-tech_company_org_chart_2 = {
+"tech_company_org_chart_2 =": {
     "name": "CEO",
     "subordinates": [
         {
@@ -111,9 +111,9 @@ tech_company_org_chart_2 = {
             ]
         }
     ]
-}
+},
 
-tech_company_org_chart_3 = {
+"tech_company_org_chart_3 =": {
     "name": "CEO",
     "subordinates": [
         {
@@ -169,4 +169,4 @@ tech_company_org_chart_3 = {
             ]
         }
     ]
-}
+}}
