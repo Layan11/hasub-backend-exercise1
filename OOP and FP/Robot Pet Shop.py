@@ -1,6 +1,10 @@
 from random import randint
+### script not running! gives me an error: 
+# line 122, in create_pets
+#     pet = Robot(materials[randint(2)], randint(20, 70), randint(1, 5), name, i, battery[randint(2)],
+# TypeError: Random.randint() missing 1 required positional argument: 'b'
 
-
+### missing reactivity - other than creating a store, what can i do? how do i interact with the software?
 class Robot:
     def __init__(self, main_material, price, cost_to_fix, name, id, battery_type, animal_type, state, days_to_repair):
         self.main_material = main_material
@@ -28,6 +32,7 @@ class Store:
         self.employees = employees
         self.in_repair = []
 
+    ### good breaking down funcitonality to smaller chunks
     def find_pet(self, id):
         for pet in self.pets:
             if pet.id == id:
@@ -119,6 +124,7 @@ def create_pets(num):
     animal_type = ['herbivore', 'carnivore']
     for i in range(num):
         name = "pet " + str(i)
+        ### magic numbers
         pet = Robot(materials[randint(2)], randint(20, 70), randint(1, 5), name, i, battery[randint(2)],
                     animal_type[randint(2)], "for sale", randint(6))
         pets.append(pet)
@@ -129,6 +135,7 @@ def create_employees(num):
     employees = []
     for i in range(num):
         robot = create_pets(1)
+        ### magic numbers + hardcoding
         employee = Employee(randint(20, 70), robot.main_materials, robot.price, robot.cost_to_fix, robot.name, robot.id,
                             robot.battery_type, robot.animal_type, robot.state, robot.days_to_repair)
         employees.append(employee)
