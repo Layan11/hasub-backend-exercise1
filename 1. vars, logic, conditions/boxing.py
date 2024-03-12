@@ -20,8 +20,8 @@ def winner(num1, num2):
 
 if __name__ == '__main__':
     user_move = '0'
-    while user_move not in ['1', '2', '3', '4', '5', '6']:
-        user_move = input(print('Please select a number from 1 to 6, representing a boxing move: '))
+    while user_move not in ['1. vars, logic, conditions', '2.  loops, lists, dictionaries', '3', '4', '5', '6']:
+        user_move = input(print('Please select a number from 1. vars, logic, conditions to 6, representing a boxing move: '))
     random_move = randrange(1, 5)
     print('random move = ' + str(random_move))
     winner(int(user_move), random_move)

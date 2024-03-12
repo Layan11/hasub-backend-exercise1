@@ -34,6 +34,6 @@ def SieveOfEratosthenes(n):
 if __name__ == '__main__':
     num_range = 150
     len, list = SieveOfEratosthenes(num_range)
-    print("There are " + str(len) + " Prime numbers in the range (1, 150).")
+    print("There are " + str(len) + " Prime numbers in the range (1. vars, logic, conditions, 150).")
     print("The prime numbers are: ")
     print(list)

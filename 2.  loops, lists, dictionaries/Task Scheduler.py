@@ -14,21 +14,21 @@ class WorkWeek():
 
 def take_input():
     week_days = {'sunday':0, 'monday':1, 'tuesday':2, 'wednesday':3, 'thursday':4}
-    duration_hours = ['1', '2', '3', '4', '5', '6', '7', '8']
+    duration_hours = ['1. vars, logic, conditions', '2.  loops, lists, dictionaries', '3', '4', '5', '6', '7', '8']
     week_hours = ['9', '10', '11', '12', '13', '14', '15', '16', '17']
-    name = input(print("Please enter a task name, if there are no more tasks please enter '-1' "))
-    if name == "-1":
+    name = input(print("Please enter a task name, if there are no more tasks please enter '-1. vars, logic, conditions' "))
+    if name == "-1. vars, logic, conditions":
         return Task(-1, -1, -1, -1)
     duration = input(print("Please enter the task duration in hours: "))
     while duration not in duration_hours:
-        duration = input(print("The duration has to be in the range (1,8), enter again: "))
+        duration = input(print("The duration has to be in the range (1. vars, logic, conditions,8), enter again: "))
     start_day = input(print("Please choose a start day for the task (sunday - thursday), "
-                                "if there's no preferred start day enter '-1'"))
-    while start_day not in week_days.keys() and start_day != '-1':
+                                "if there's no preferred start day enter '-1. vars, logic, conditions'"))
+    while start_day not in week_days.keys() and start_day != '-1. vars, logic, conditions':
         start_day = input(
             print("The day has to be a valid day of the week between sunday to thursday, enter again: "))
-    if start_day == '-1':
-        task = Task(name, duration, '-1', '-1')
+    if start_day == '-1. vars, logic, conditions':
+        task = Task(name, duration, '-1. vars, logic, conditions', '-1. vars, logic, conditions')
     else:
         start_hour = input(print("At what hour would you want this task to start? choose a time between 9 - 17: "))
         while start_hour not in week_hours:
@@ -66,7 +66,7 @@ def check_for_slot(work_week, start_day, start_hour, duration, demand):
 
 
 def populate(task, work_week):
-    if task.start_day != '-1':
+    if task.start_day != '-1. vars, logic, conditions':
         success, must_remove = check_for_slot(work_week, task.start_day, task.start_hour, task.duration, 1)
     else:
         for day in range(6):
@@ -87,10 +87,10 @@ def populate(task, work_week):
     else:
         print(must_remove)
         keep_old = input(print("are the tasks currently populated at the time range you chose. "
-                               "If you want to keep the old press '1',"
+                               "If you want to keep the old press '1. vars, logic, conditions',"
                                " if you want to replace it with the new task press '0"))
-        while keep_old not in ['1', '0']:
-            keep_old = input(print("press '1' to keep the old, and '0' to replace it with the new."))
+        while keep_old not in ['1. vars, logic, conditions', '0']:
+            keep_old = input(print("press '1. vars, logic, conditions' to keep the old, and '0' to replace it with the new."))
         if keep_old == '0':
             print("REMOVING OLD ")
             remove_old(work_week, must_remove, task.start_day)

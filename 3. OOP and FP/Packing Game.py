@@ -176,10 +176,10 @@ if __name__ == '__main__':
         print("Curr packing list is: ")
         pack.print_items()
         print("Total weight left to fill = " + str(pack.max_weight - pack.curr_weight))
-        op = '-1'
-        while op not in ['1', '0']:
-            op = input(print("press '1' to add item, and '0' to remove: "))
-        if op == '1':
+        op = '-1. vars, logic, conditions'
+        while op not in ['1. vars, logic, conditions', '0']:
+            op = input(print("press '1. vars, logic, conditions' to add item, and '0' to remove: "))
+        if op == '1. vars, logic, conditions':
             new_item = ""
             unused_names = pack.unused_items.keys()
 
