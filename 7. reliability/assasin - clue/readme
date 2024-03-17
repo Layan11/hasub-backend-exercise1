@@ -1,0 +1,13 @@
+This is a game of clue, to run it please run the __main__ module.
+
+The text files: 'places' and 'weapons' contain all the different places that exist in the game,
+and the different weapons, respectively. If you would like to add more places or weapons or change their names
+you can edit those text files and the code would still work correctly.
+
+The module player contains a class of the player with all its needed attributes.
+
+The module game contains the game class which has all of the moves and functionalities of the game.
+
+The number of players is given by the user input.
+
+The code could fall if the user input isn't valid, so i used try/except block to deal with that.
