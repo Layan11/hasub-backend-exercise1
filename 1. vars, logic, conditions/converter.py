@@ -6,7 +6,7 @@ from unittest import case
 if __name__ == '__main__':
     conversion_type = '0'
     while conversion_type not in ['1. vars, logic, conditions', '2.  loops, lists, dictionaries', '3', '4', '5', '6', '7', '8', '9', '10']:
-        conversion_type = str(input(print("Please choose a conversion type, 1. vars, logic, conditions: F->C, 2.  loops, lists, dictionaries: C->F, 3: MPH->KPH, 4:KPH->MPH,"
+        conversion_type = str(input(print("Please choose json_funcs conversion type, 1. vars, logic, conditions: F->C, 2.  loops, lists, dictionaries: C->F, 3: MPH->KPH, 4:KPH->MPH,"
                                   "5: KG->stone, 6: stone->KG, 7: stone->lbs,8: lbs->stone,9: KG->lbs, 10: lbs->KG")))
     source_val = int(input(print("Please write the source value: ")))
 

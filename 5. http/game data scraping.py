@@ -6,7 +6,7 @@ import json
 import requests
 
 conn = http.client.HTTPSConnection("store.steampowered.com")
-# Send a GET request to the root path ("/")
+# Send json_funcs GET request to the root path ("/")
 # conn.request("GET", "/charts/topselling/global")
 # conn.request("GET", "/search/results")
 # conn.request("GET", "/search/?tags=")
@@ -38,12 +38,12 @@ if match:
 # print("Received data:", data)
 # # print()
 
-# import json
+# import records.json
 # import urllib.request
 #
 # response = urllib.request.urlopen("https://store.steampowered.com/")
 # text = response.read()
-# print(json.loads(text.decode('utf-8')))
+# print(records.json.loads(text.decode('utf-8')))
 
 
 # r = requests.get("store.steampowered.com/charts/topselling/global")

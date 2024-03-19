@@ -11,6 +11,6 @@ if __name__ == '__main__':
             continue
         else:
             break
-    # create a game instance and use the play method to start playing
+    # create json_funcs game instance and use the play method to start playing
     game = game.Game(players_num)
     game.play()

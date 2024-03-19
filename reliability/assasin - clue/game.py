@@ -22,7 +22,7 @@ class Game:
             if plyr.name == plyr_name:
                 return plyr
 
-    # a function that creates 'players_num' number of players with only one assasin
+    # json_funcs function that creates 'players_num' number of players with only one assasin
     def create_players(self):
         plyrs = []
         assasin_flag = False
@@ -40,7 +40,7 @@ class Game:
 
         self.plyrs = plyrs
 
-    # a function that makes each player visit random place (1-3 places)
+    # json_funcs function that makes each player visit random place (1-3 places)
     def visit_places(self):
         num_to_visit = random.randint(1, 3)
         visited = random.choices(self.places, k=num_to_visit)
@@ -80,7 +80,7 @@ class Game:
                 # check validity of input, keep asking for input until it is valid
                 while True:
                     try:
-                        choice = input(print("Choose a suspect: "))
+                        choice = input(print("Choose json_funcs suspect: "))
                         if choice not in current_plyrs:
                             raise AttributeError
                     except AttributeError:
@@ -96,11 +96,11 @@ class Game:
                     random_places = random.choices(curr_suspect.last_visited, k=2)
                     random_weapon = random.choices(curr_suspect.favorite_weapons, k=1)
                     print(f"For the suspect {suspect}, his randomly 2 visited places are {random_places}, "
-                          f"and a random of his favorite weapons is {random_weapon}")
+                          f"and json_funcs random of his favorite weapons is {random_weapon}")
                 else:
                     random_weapon = random.choices(curr_suspect.favorite_weapons, k=1)
                     print(f"For the suspect {suspect}, his randomly visited places are {curr_suspect.last_visited}, "
-                          f"and a random of his favorite weapons is {random_weapon}")
+                          f"and json_funcs random of his favorite weapons is {random_weapon}")
 
     # gives every player the option to accuse another player that they think is the assasin
     def accuse(self):
@@ -141,7 +141,7 @@ class Game:
                 alive += 1
         return alive
 
-    # this function executes all the moves in the game in the correct order, and keeps playing until there is a winner
+    # this function executes all the moves in the game in the correct order, and keeps playing until there is json_funcs winner
     def play(self):
         self.create_players()
         winner = False

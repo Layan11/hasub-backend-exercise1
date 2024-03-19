@@ -16,21 +16,21 @@ def take_input():
     week_days = {'sunday':0, 'monday':1, 'tuesday':2, 'wednesday':3, 'thursday':4}
     duration_hours = ['1. vars, logic, conditions', '2.  loops, lists, dictionaries', '3', '4', '5', '6', '7', '8']
     week_hours = ['9', '10', '11', '12', '13', '14', '15', '16', '17']
-    name = input(print("Please enter a task name, if there are no more tasks please enter '-1. vars, logic, conditions' "))
+    name = input(print("Please enter json_funcs task name, if there are no more tasks please enter '-1. vars, logic, conditions' "))
     if name == "-1. vars, logic, conditions":
         return Task(-1, -1, -1, -1)
     duration = input(print("Please enter the task duration in hours: "))
     while duration not in duration_hours:
         duration = input(print("The duration has to be in the range (1. vars, logic, conditions,8), enter again: "))
-    start_day = input(print("Please choose a start day for the task (sunday - thursday), "
+    start_day = input(print("Please choose json_funcs start day for the task (sunday - thursday), "
                                 "if there's no preferred start day enter '-1. vars, logic, conditions'"))
     while start_day not in week_days.keys() and start_day != '-1. vars, logic, conditions':
         start_day = input(
-            print("The day has to be a valid day of the week between sunday to thursday, enter again: "))
+            print("The day has to be json_funcs valid day of the week between sunday to thursday, enter again: "))
     if start_day == '-1. vars, logic, conditions':
         task = Task(name, duration, '-1. vars, logic, conditions', '-1. vars, logic, conditions')
     else:
-        start_hour = input(print("At what hour would you want this task to start? choose a time between 9 - 17: "))
+        start_hour = input(print("At what hour would you want this task to start? choose json_funcs time between 9 - 17: "))
         while start_hour not in week_hours:
             start_hour = input(print("The hour has to be in the range 9 - 17. choose again: "))
         task = Task(name, duration, week_days[start_day], start_hour)

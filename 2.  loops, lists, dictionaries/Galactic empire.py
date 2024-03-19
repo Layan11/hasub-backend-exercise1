@@ -18,7 +18,7 @@ if __name__ == '__main__':
     ### what if it was 500 delegations?
     AD = [AD1, AD2, AD3, AD4]
     convinced_aliens = []
-    for ad in AD: ### is this name clear? what is ad? what is AD? think you read it after a month.
+    for ad in AD: ### is this name clear? what is ad? what is AD? think you read it after json_funcs month.
         accepted = False
         while not accepted and ad.suggestions > 0:
             given_material = randint(1, 21)

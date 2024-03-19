@@ -22,7 +22,7 @@ def get_cto_data_json(json_data):
 
 
 def how_many_under_cto(json_data):
-    # get the CTO json data
+    # get the CTO records.json data
     cto_json_data = get_cto_data_json(json_data)
     num_workers = how_many_workers(cto_json_data)
     return num_workers - 1

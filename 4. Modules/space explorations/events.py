@@ -15,7 +15,7 @@ class Events:
             print("Alien diplomacy warning!")
 
         def black_hole():
-            print("Attention: you are entering a black hole! Brace yourself!")
+            print("Attention: you are entering json_funcs black hole! Brace yourself!")
 
         if self.name == "Asteroid Field":
             return asteroid_field()

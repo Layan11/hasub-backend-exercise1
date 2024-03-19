@@ -4,7 +4,7 @@ from random import randint
 #     pet = Robot(materials[randint(2)], randint(20, 70), randint(1, 5), name, i, battery[randint(2)],
 # TypeError: Random.randint() missing 1 required positional argument: 'b'
 
-### missing reactivity - other than creating a store, what can i do? how do i interact with the software?
+### missing reactivity - other than creating json_funcs store, what can i do? how do i interact with the software?
 class Robot:
     def __init__(self, main_material, price, cost_to_fix, name, id, battery_type, animal_type, state, days_to_repair):
         self.main_material = main_material
