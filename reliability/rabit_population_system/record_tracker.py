@@ -1,11 +1,8 @@
-import static as static
 
 
-# record_num = 0
 # this class is to track whenever the sensor adds 10 new records
 class Tracker:
     def __init__(self, max_records):
-        # global record_num
         self.record_num = 0
         self.max_records = max_records
 
@@ -17,7 +14,7 @@ class Tracker:
         self.record_num += 1
 
     # whenever the backend reads a record it decrements it from the tracker so that it resets the counter
-    # # and starts counting again until it reaches 10 new records again
+    # and starts counting again until it reaches 10 new records again
     def decrement_records(self, num):
         if type(num) != int:
             raise TypeError
@@ -30,4 +27,3 @@ class Tracker:
             return True
         else:
             return False
-

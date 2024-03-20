@@ -1,5 +1,4 @@
 from datetime import time
-
 from reliability.rabit_population_system.json_funcs import read
 
 
@@ -63,5 +62,4 @@ class Backend:
             self.read_records += records_num
         # couldn't  read data due to exceptions (other than IOError)
         else:
-            print("A reading error occured!")
-
+            print("A reading error has occured!")

@@ -1,10 +1,7 @@
-import asyncio
 import random
-import sys
 import time
 from reliability.rabit_population_system.json_funcs import write
 import reliability.rabit_population_system.record as record
-from reliability.rabit_population_system.record_tracker import Tracker
 
 
 class Sensor:
@@ -37,8 +34,8 @@ class Sensor:
 
     # this function generates and adds json_funcs new record
     def add_record(self, tracker):
-        if type(tracker) != Tracker:
-            raise TypeError
+        # if type(tracker) != Tracker:
+        #     raise TypeError
         new_record = self.create_new_record()
         # try block for all kinds of exceptions in the write function and deal with each one accordingly.
         # for the IOError exception the function tries to write the data again, using the function 'try_again'
@@ -61,16 +58,3 @@ class Sensor:
 
         self.curr_records += 1
         tracker.record_added()
-
-
-    ##################################
-
-    # this functions keeps creating records and adds them to the db until it reaches the max number of records
-    # and each time it waits a random number of seconds in the range (5, 10) before it continues to add new records.
-    def start(self, tracker):
-        while self.curr_records <= self.max_records:
-            print("The number of records so far is:  " + str(self.curr_records))
-            self.add_record(tracker)
-            seconds_to_wait = random.randrange(5, 10)
-            # asyncio.sleep(seconds_to_wait)
-            time.sleep(seconds_to_wait)
