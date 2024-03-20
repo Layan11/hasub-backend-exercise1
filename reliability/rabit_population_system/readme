@@ -1,0 +1,21 @@
+
+This project tracks the growth of a population of rabbits, with two basic components: the sensor, and the backend.
+The sensor samples the number of deaths and births of rabbits. And the backend analyzes the data from the sensor and
+updates the number of currently alive rabbits.
+
+The module 'sensor' has the attributes and functionality of creating and adding new records to the json file
+'records.json'.
+
+The module 'backend' has the attributes and functionality of reading from the json file each time 10 new records
+get added by the sensor, and updating the number of alive rabbits according to the births and deaths of each record,
+discarding records with invalid input.
+
+The module 'record_tracker' has the class 'Tracker' which tracks the records being added and everytime 10 new records
+accumulate, it indicates that and starts counting from zero again for the next 10.
+
+The '__main__' function runs the sensor and backend consecutively.
+
+The points of failure could happen when exceptions get raised when reading or writing to json file, and that is why
+for every exception possible there is a function that deals with it according to the type of error.
+
+The directory 'tests' includes all the test files for each module individually, and for different types of inputs.

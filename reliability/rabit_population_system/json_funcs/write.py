@@ -1,6 +1,5 @@
 import random
 import json
-import reliability.rabit_population_system.data
 
 failure_probability = 0  # Initial failure probability
 
@@ -20,7 +19,8 @@ def write_to_json(msg):
             ])
             raise random_exception("Random exception raised")
         else:
-            with open('../rabit_population_system/data/records.json', 'r+') as f:
+            with open('C:/Users/Layan/PycharmProjects/hasub-backend-exercise1/reliability/'
+                      'rabit_population_system/data/records.json', 'r+') as f:
                 f.seek(0)
                 content = f.read()
                 content = json.loads(content)
@@ -34,5 +34,3 @@ def write_to_json(msg):
     except Exception as e:
         failure_probability = 0  # Reset failure probability upon failure
         raise e
-
-

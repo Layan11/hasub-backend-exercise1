@@ -2,57 +2,75 @@ import asyncio
 import random
 import sys
 import time
-# import reliability.rabit_population_system.json_funcs as json_funcs
-from json_funcs import write
-import record
-import record_tracker
+from reliability.rabit_population_system.json_funcs import write
+import reliability.rabit_population_system.record as record
+from reliability.rabit_population_system.record_tracker import Tracker
 
 
 class Sensor:
     def __init__(self):
-        self.max_records = random.randrange(10, 15)
-        print(self.max_records)
+        self.max_records = random.randrange(100, 300)
+        print("The max number of records is: " + str(self.max_records))
         self.curr_records = 0
 
+    # this function creates a new record with random values in the Record class fields
     def create_new_record(self):
         timestamp = time.time()
-        deaths = random.randint(0, sys.maxsize)
-        births = random.randint(0, sys.maxsize)
+        deaths = random.randint(0, 1000)  # the max number of deaths and births is chosen to be 1000, it can be changed.
+        births = random.randint(0, 1000)
         new_record = record.Record(timestamp, deaths, births)
         return new_record
 
+    # this function tries to write the new record if there was an exception for four times max
+    def try_again(self, new_record):
+        for x in range(0, 4):  # try 4 times
+            try:
+                write.write_to_json(new_record)
+                str_error = None
+            except Exception as str_error:
+                pass
+
+            if str_error:
+                time.sleep(2)  # wait for 2 seconds before trying to write the data again
+            else:
+                break
+
     # this function generates and adds json_funcs new record
     def add_record(self, tracker):
+        if type(tracker) != Tracker:
+            raise TypeError
         new_record = self.create_new_record()
         # try block for all kinds of exceptions in the write function and deal with each one accordingly.
-        # try:
-        print("Printing what the write to json func returns>>>>>>>>>>>>>>>")
+        # for the IOError exception the function tries to write the data again, using the function 'try_again'
+
         try:
-            write.write_to_json(new_record.deaths)
+            write.write_to_json(new_record.to_json())
         except FileNotFoundError:
-            print("HAHA ERROR")
+            print("Writing error: The file was not found")
         except PermissionError:
-            print("TWO")
+            print("Writing error: There was a permission error")
         except IsADirectoryError:
-            print("THREE")
+            print("Writing error: IsADirectoryError")
         except FileExistsError:
-            print("FOUR")
+            print("Writing error: FileExistsError")
         except NotADirectoryError:
-            print("FIVE")
+            print("Writing error: NotADirectoryError")
         except IOError:
-            print("SIX")
+            print("Writing error: IOError, trying again..")
+            self.try_again(new_record.to_json())
 
         self.curr_records += 1
-        tracker.record_num += 1
-        print("record num = ")
-        print(tracker.record_num)
+        tracker.record_added()
 
+
+    ##################################
+
+    # this functions keeps creating records and adds them to the db until it reaches the max number of records
+    # and each time it waits a random number of seconds in the range (5, 10) before it continues to add new records.
     def start(self, tracker):
         while self.curr_records <= self.max_records:
-            print("num of records is " + str(self.curr_records))
+            print("The number of records so far is:  " + str(self.curr_records))
             self.add_record(tracker)
-            # seconds_to_wait = random.randrange(5, 10)
-            seconds_to_wait = random.randrange(1, 2)
+            seconds_to_wait = random.randrange(5, 10)
             # asyncio.sleep(seconds_to_wait)
             time.sleep(seconds_to_wait)
-
