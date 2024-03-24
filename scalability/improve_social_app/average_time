@@ -1,0 +1,10 @@
+************* Before optimization *****************
+Average run time for 'social_media.register_user' is 3.066666666666667e-06
+Average run time for 'user.follow' is 8.000000000000013e-07
+Average run time for 'social_media.post_message' is 8.999999999999948e-07
+Average run time for 'social_media.generate_timeline' is 5.000000000000032e-07
+************* After optimization *****************
+Average run time for 'social_media.register_user' is 3.199999999998921e-06
+Average run time for 'user.follow' is 1.2999999999997968e-06
+Average run time for 'social_media.post_message' is 1.7333333333334477e-06
+Average run time for 'social_media.generate_timeline' is 9.333333333335728e-07

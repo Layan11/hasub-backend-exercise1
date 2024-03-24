@@ -1,0 +1,7 @@
+
+The module user includes a class of 'User' who has a user name and a list of people he follows, the user can add people to his
+following list, as well as posting a new post with a given message. The module also includes a global list of posts
+which includes all the posts from the list of users in the platform.
+
+The module social_media allows registration of new users to the platform if they are not already registered, as well as
+generating the timeline for each user, which is all the posts from people the user follows.
