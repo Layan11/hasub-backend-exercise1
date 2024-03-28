@@ -20,7 +20,7 @@ def reverse_image(image, start, end, i):
 def main():
     image = Image.open("C:/Users/Layan/PycharmProjects/hasub-backend-exercise1/scalability/reverse_image/img1.jpg")
     cols, rows = image.size
-    threads_num = 3
+    threads_num = 5
     chunk_size = rows // threads_num
     start = time.perf_counter()
     processes = []
