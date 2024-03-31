@@ -34,6 +34,7 @@ class Server:
             self.update_tickets(request.tickets_num)
         else:
             print("Not enough available tickets.")
+            ### better to detail what exception
             raise Exception
 
     def handle_requests(self):
@@ -42,7 +43,7 @@ class Server:
             thread = Thread(target=self.sell_ticket())
             threads.append(thread)
             thread.start()
-
+    ### good job wing thread for scalability
         for thread in threads:
             thread.join()
 
