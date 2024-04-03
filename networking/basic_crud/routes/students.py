@@ -19,7 +19,6 @@ def get_all_students(request: Request):
 def get_student(student_id, request: Request):
     if auth_fns.check_token(request):
         students = db_fns.load_db()
-
         for student in students["Students"]:
             if student["id"] == student_id:
                 return student["name"]
