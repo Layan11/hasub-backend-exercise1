@@ -30,7 +30,11 @@ def get_student(student_id, request: Request):
 
 @router.get('/student_by_class/{class_name}')
 def get_student_by_class(class_name, request: Request):
-    if auth_fns.check_token(request) and auth_fns.check_admin(request):
+    if not auth_fns.check_token(request):
+        raise HTTPException(400, "no token")
+    elif not auth_fns.check_admin(request):
+        raise HTTPException(400, "access denied, only admin is allowed")
+    else:
         students = db_fns.load_db()
         class_students = []
         for student in students["Students"]:
@@ -39,18 +43,18 @@ def get_student_by_class(class_name, request: Request):
         if len(class_students) == 0:
             return "No students in this class"
         return class_students
-    else:
-        raise HTTPException(400, "no token, or access denied")
 
 
 @router.post('/add_student/')
 def add_student(Student: student_model, request: Request):
-    if auth_fns.check_token(request) and auth_fns.check_admin(request):
+    if not auth_fns.check_token(request):
+        raise HTTPException(400, "no token")
+    elif not auth_fns.check_admin(request):
+        raise HTTPException(400, "access denied, only admin is allowed")
+    else:
         students = db_fns.load_db()
         for student in students["Students"]:
             if student["id"] == Student.id:
                 return "Student already exists in db"
         db_fns.wrtie_to_db(Student)
         return "Student added successfully"
-    else:
-        raise HTTPException(400, "no token, or access denied")
