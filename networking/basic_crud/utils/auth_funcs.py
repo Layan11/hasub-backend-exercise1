@@ -1,8 +1,10 @@
+from enum import Enum
 import bcrypt
 import utils.db_funcs as fns
 import jwt
 import json
 from base64 import b64decode as decode
+from models.roles import Roles
 
 secret = "some secret text"
 
@@ -16,13 +18,13 @@ def verify_password(stored_pass, user_pass):
     return bcrypt.checkpw(user_pass.encode('utf-8'), stored_pass.encode('utf-8'))
 
 
-def create_new_user(password, username, role):
+def create_new_user(password, username):
     hashed_password = hash_password(password)
     current_db = fns.load_db()
     current_db[username] = {
         "username": username,
         "password": hashed_password,
-        "role": role
+        "role": Enum(Roles, default="user")
     }
     return current_db
 

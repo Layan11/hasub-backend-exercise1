@@ -1,6 +1,6 @@
-from pydantic import BaseModel
+from enum import Enum
 
 
-class Roles(BaseModel):
-    user: "user"
-    admin: "admin"
+class Roles(str, Enum):
+    user = "user"
+    admin = "admin"
